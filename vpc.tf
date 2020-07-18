@@ -109,7 +109,7 @@ resource "aws_security_group" "allow_tlsp" {
 }
 
 
-#creating security group for wordpresssubnet
+#creating security group for mysqlsubnet
 resource "aws_security_group" "allow_tlsp2" {
   name        = "allow_tlsp2"
   vpc_id      = "${aws_vpc.main.id}"
@@ -147,9 +147,9 @@ resource "aws_instance" "wordpress" {
   }
 }
 
-#creating aws instance
+#creating aws mysql instance
 resource "aws_instance" "mysql" {
- ami   ="ami-0447a12f28fddb066"
+ ami   ="ami-08706cb5f68222d09"
   instance_type = "t2.micro"
   key_name="${aws_key_pair.generated_key.key_name}"
   vpc_security_group_ids = ["${aws_security_group.allow_tlsp2.id}"]
